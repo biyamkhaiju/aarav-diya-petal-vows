@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project Architecture
+
+- Keep all wedding invitation sections and ambient floral animations modular under `src/components/wedding/`, with guest RSVP confirmation stored browser-only in `localStorage` (`aarav-diya-rsvp-v1`) until a shared backend is requested.
