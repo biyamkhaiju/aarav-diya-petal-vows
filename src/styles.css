@@ -111,8 +111,8 @@
   --gold-deep: oklch(0.56 0.092 60);
   --parchment: oklch(0.945 0.034 74);
   --parchment-foreground: oklch(0.23 0.048 38);
-  --blossom: oklch(0.78 0.125 356);
-  --blossom-soft: oklch(0.89 0.072 8);
+  --blossom: oklch(0.6 0.19 25);
+  --blossom-soft: oklch(0.8 0.1 30);
   --crimson: oklch(0.45 0.165 22);
   --lantern: oklch(0.85 0.145 68);
   --dusk: oklch(0.19 0.038 24);
@@ -251,6 +251,68 @@
   }
 }
 
+@keyframes rays-spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes sparkle-twinkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.4) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(45deg);
+  }
+}
+
+@keyframes gold-shimmer-text {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+@utility animate-rays-spin {
+  animation: rays-spin 90s linear infinite;
+}
+
+@utility animate-sparkle {
+  animation: sparkle-twinkle 3.2s ease-in-out infinite;
+}
+
+@utility text-gold-shimmer {
+  background-image: linear-gradient(
+    100deg,
+    oklch(0.9 0.08 78) 20%,
+    oklch(0.99 0.03 85) 40%,
+    oklch(0.86 0.12 60) 55%,
+    oklch(0.92 0.07 80) 75%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 14px oklch(0.3 0.12 25 / 70%));
+  animation: gold-shimmer-text 7s linear infinite;
+}
+
+@utility sunset-rays {
+  background: repeating-conic-gradient(
+    from 0deg,
+    oklch(0.92 0.12 70 / 22%) 0deg 6deg,
+    transparent 6deg 18deg
+  );
+  mask-image: radial-gradient(circle, black 0%, transparent 68%);
+}
+
 @utility text-gold-glow {
   color: var(--gold-light);
   text-shadow:
@@ -353,7 +415,10 @@
   .animate-float-gentle,
   .animate-scroll-cue,
   .animate-hero-rise,
-  .animate-water-glint {
+  .animate-water-glint,
+  .animate-rays-spin,
+  .animate-sparkle,
+  .text-gold-shimmer {
     animation: none !important;
   }
 }

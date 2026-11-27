@@ -19,10 +19,10 @@ interface Petal {
 }
 
 const PETAL_PALETTES = [
-  { main: "rgba(255, 206, 218, 0.92)", edge: "rgba(244, 152, 178, 0.72)" },
-  { main: "rgba(252, 186, 205, 0.88)", edge: "rgba(232, 128, 160, 0.7)" },
-  { main: "rgba(255, 228, 224, 0.9)", edge: "rgba(248, 178, 186, 0.65)" },
-  { main: "rgba(248, 164, 190, 0.86)", edge: "rgba(218, 108, 146, 0.68)" },
+  { main: "rgba(226, 92, 92, 0.9)", edge: "rgba(170, 34, 44, 0.72)" },
+  { main: "rgba(240, 128, 112, 0.88)", edge: "rgba(196, 58, 52, 0.7)" },
+  { main: "rgba(252, 184, 160, 0.9)", edge: "rgba(214, 92, 76, 0.65)" },
+  { main: "rgba(204, 58, 66, 0.86)", edge: "rgba(140, 22, 36, 0.7)" },
 ] as const;
 
 function createParticle(width: number, height: number, spawnAbove: boolean): Petal {

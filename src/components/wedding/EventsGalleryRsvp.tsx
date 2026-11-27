@@ -69,7 +69,7 @@ function SceneWash() {
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-blossom/10 mix-blend-soft-light"
+        className="pointer-events-none absolute inset-0 bg-blossom/15 mix-blend-soft-light"
       />
     </>
   );
@@ -284,7 +284,7 @@ export function ThankYouSection() {
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-blossom/5 mix-blend-soft-light"
+        className="pointer-events-none absolute inset-0 bg-blossom/10 mix-blend-soft-light"
       />
 
       <div
