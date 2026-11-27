@@ -1,0 +1,3 @@
+- [x] Match all six sections closely to the supplied reference, including pink-gold tone
+- [x] Wire and verify the 0–60 second music player
+- [x] Check desktop/mobile preview, tests, build, and Vercel configuration

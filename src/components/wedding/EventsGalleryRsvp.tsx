@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Heart } from "lucide-react";
-import eventsBg from "../../assets/events-bg.jpg";
+import eventsBg from "../../assets/events-sunlit.jpg";
 import galleryHands from "../../assets/gallery-hands.jpg";
 import galleryLantern from "../../assets/gallery-lantern.jpg";
 import galleryTemple from "../../assets/gallery-temple.jpg";
+import rsvpBg from "../../assets/rsvp-bg.jpg";
 import thankyouBg from "../../assets/thankyou-bg.jpg";
 import { useReveal } from "../../hooks/use-reveal";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "../ui/dialog";
+import { OrnateEventArchCard, OrnateRsvpPlaque } from "./OrnateFrames";
 import type { RsvpSubmission } from "./RsvpDialog";
 import {
   BuddhaEyesIcon,
@@ -58,24 +60,37 @@ const GALLERY_PHOTOS = [
   },
 ] as const;
 
+function SceneWash() {
+  return (
+    <>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-dusk/50 via-dusk/5 to-dusk/25"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-blossom/10 mix-blend-soft-light"
+      />
+    </>
+  );
+}
+
 export function EventsSection() {
   const { ref, visible } = useReveal(0.14);
 
   return (
     <section
       id="events"
-      className="wedding-section-blend flex min-h-screen flex-col justify-center py-24 sm:py-28"
+      className="wedding-section-blend flex min-h-screen flex-col justify-center py-16 sm:py-20"
     >
       <img
         src={eventsBg}
         alt=""
         aria-hidden="true"
+        loading="lazy"
         className="absolute inset-0 h-full w-full object-cover object-center"
       />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-dusk/90 via-dusk/25 to-dusk/90"
-      />
+      <SceneWash />
 
       <div ref={ref} className="relative z-10 mx-auto w-full max-w-5xl px-5 sm:px-8">
         <div
@@ -90,31 +105,27 @@ export function EventsSection() {
           />
         </div>
 
-        <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-7 sm:grid-cols-3 sm:gap-6">
+        <div className="mx-auto mt-9 grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-4 md:gap-6">
           {EVENT_CARDS.map((card, index) => {
             const Icon = card.icon;
             return (
-              <article
+              <OrnateEventArchCard
                 key={card.title}
-                style={{ transitionDelay: `${index * 140}ms` }}
-                className={`parchment-arch shimmer-overlay group relative overflow-hidden rounded-t-[135px] rounded-b-xl p-2.5 transition-all duration-700 hover:-translate-y-2 ${
-                  visible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
-                }`}
+                delayClass={`${index * 140}ms`}
+                visible={visible}
               >
-                <div className="flex h-full min-h-[290px] flex-col items-center justify-center rounded-t-[125px] rounded-b-lg border border-gold-deep/45 px-5 py-10 text-center">
-                  <div className="mb-5 text-gold-deep transition-transform duration-500 group-hover:scale-110">
-                    <Icon />
-                  </div>
-                  <h3 className="font-[family-name:var(--font-display)] text-3xl font-semibold tracking-wide text-parchment-foreground">
-                    {card.title}
-                  </h3>
-                  <div className="mt-3 space-y-0.5 font-[family-name:var(--font-sans)] text-[15px] leading-relaxed text-parchment-foreground/85">
-                    {card.lines.map((line) => (
-                      <p key={line}>{line}</p>
-                    ))}
-                  </div>
+                <div className="mb-4 text-gold-deep transition-transform duration-500 group-hover:scale-110">
+                  <Icon />
                 </div>
-              </article>
+                <h3 className="font-[family-name:var(--font-display)] text-3xl font-semibold tracking-wide text-parchment-foreground">
+                  {card.title}
+                </h3>
+                <div className="mt-3 space-y-0.5 font-[family-name:var(--font-sans)] text-[15px] leading-relaxed text-parchment-foreground/90">
+                  {card.lines.map((line) => (
+                    <p key={line}>{line}</p>
+                  ))}
+                </div>
+              </OrnateEventArchCard>
             );
           })}
         </div>
@@ -130,18 +141,16 @@ export function GallerySection() {
   return (
     <section
       id="gallery"
-      className="wedding-section-blend flex min-h-screen flex-col justify-center py-24 sm:py-28"
+      className="wedding-section-blend flex min-h-screen flex-col justify-center py-16 sm:py-20"
     >
       <img
         src={eventsBg}
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full -scale-x-100 object-cover object-bottom"
+        loading="lazy"
+        className="absolute inset-0 h-full w-full -scale-x-100 object-cover object-center"
       />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-dusk/90 via-dusk/35 to-dusk/92"
-      />
+      <SceneWash />
 
       <div ref={ref} className="relative z-10 mx-auto w-full max-w-5xl px-5 sm:px-8">
         <div
@@ -152,7 +161,7 @@ export function GallerySection() {
           <SectionHeading title="Gallery" subtitle="Moments that last forever." inlineLotus />
         </div>
 
-        <div className="mx-auto mt-14 grid max-w-4xl grid-cols-1 items-center gap-8 sm:grid-cols-3 sm:gap-6">
+        <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 items-center gap-8 sm:grid-cols-3 sm:gap-5">
           {GALLERY_PHOTOS.map((photo, index) => (
             <button
               key={photo.caption}
@@ -160,20 +169,19 @@ export function GallerySection() {
               onClick={() => setSelected(photo)}
               style={{ transitionDelay: `${index * 140}ms` }}
               aria-label={`View photo: ${photo.caption}`}
-              className={`polaroid-frame group relative w-full cursor-pointer rounded-md p-2.5 pb-4 text-left transition-all duration-700 hover:z-20 hover:rotate-0 hover:scale-105 ${photo.tiltClass} ${
+              className={`polaroid-frame group relative mx-auto w-full max-w-[270px] cursor-pointer rounded-sm p-1.5 text-left transition-all duration-700 hover:z-20 hover:rotate-0 hover:scale-105 ${photo.tiltClass} ${
                 visible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
               }`}
             >
-              <div className="overflow-hidden rounded-[2px] border border-gold-deep/40">
+              <div className="overflow-hidden rounded-[2px] border border-gold-deep/45">
                 <img
                   src={photo.src}
                   alt={photo.alt}
+                  loading="lazy"
                   className={`${photo.aspectClass} w-full object-cover transition-transform duration-700 group-hover:scale-105`}
                 />
               </div>
-              <span className="mt-2.5 block text-center font-[family-name:var(--font-display)] text-sm italic text-parchment-foreground/80">
-                {photo.caption}
-              </span>
+              <span className="sr-only">{photo.caption}</span>
             </button>
           ))}
         </div>
@@ -212,22 +220,16 @@ export function RsvpSection({ rsvp, onOpenRsvp }: RsvpSectionProps) {
   return (
     <section
       id="rsvp"
-      className="wedding-section-blend flex min-h-screen flex-col justify-center py-24 sm:py-28"
+      className="wedding-section-blend flex min-h-screen flex-col justify-center py-16 sm:py-20"
     >
       <img
-        src={eventsBg}
+        src={rsvpBg}
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover object-center brightness-95"
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover object-center"
       />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-dusk/92 via-dusk/35 to-dusk/85"
-      />
-      <div
-        aria-hidden="true"
-        className="animate-halo-breathe pointer-events-none absolute bottom-[22%] left-[8%] h-48 w-48 rounded-full bg-[radial-gradient(circle,oklch(0.86_0.16_68_/_40%)_0%,transparent_70%)] blur-xl"
-      />
+      <SceneWash />
 
       <div
         ref={ref}
@@ -246,20 +248,14 @@ export function RsvpSection({ rsvp, onOpenRsvp }: RsvpSectionProps) {
           }
         />
 
-        <div className="mt-9">
-          <button
-            type="button"
-            onClick={onOpenRsvp}
-            className="rsvp-plaque shimmer-overlay group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full px-9 py-4 font-[family-name:var(--font-display)] text-xl italic font-medium tracking-wide transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_18px_40px_-8px_oklch(0.14_0.04_24_/_70%),0_0_36px_oklch(0.9_0.12_74_/_55%)] sm:px-12 sm:text-2xl"
-          >
-            <span>
-              {rsvp ? "Update your response" : "Let us know you're coming"}
-            </span>
+        <div className="mt-8">
+          <OrnateRsvpPlaque onClick={onOpenRsvp}>
+            <span>{rsvp ? "Update your response" : "Let us know you're coming"}</span>
             <Heart className="h-5 w-5 text-crimson transition-transform duration-300 group-hover:scale-125" />
-          </button>
+          </OrnateRsvpPlaque>
 
           {rsvp && (
-            <p className="mt-4 font-[family-name:var(--font-display)] text-lg italic text-gold-light [text-shadow:0_1px_12px_oklch(0.16_0.04_24_/_80%)]">
+            <p className="mx-auto mt-5 max-w-xl font-[family-name:var(--font-display)] text-lg italic text-gold-light [text-shadow:0_1px_12px_oklch(0.16_0.04_24_/_80%)]">
               {rsvp.attending === "yes"
                 ? `RSVP received for ${rsvp.name} (${rsvp.guests} ${rsvp.guests === 1 ? "guest" : "guests"}). We can't wait to celebrate with you!`
                 : `Thank you for letting us know, ${rsvp.name}. Sending you warm love.`}
@@ -275,26 +271,20 @@ export function ThankYouSection() {
   const { ref, visible } = useReveal(0.15);
 
   return (
-    <section
-      id="thank-you"
-      className="wedding-section-blend flex min-h-screen items-center py-24 sm:py-28"
-    >
+    <section id="thank-you" className="wedding-section-blend flex min-h-screen items-center py-20">
       <img
         src={thankyouBg}
         alt="Radiant golden Buddha statue framed by blooming pink cherry blossoms and floating lotuses"
-        className="absolute inset-0 h-full w-full object-cover object-[76%_center] md:object-center"
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover object-[72%_center] md:object-center"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-dusk/85 to-transparent"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-parchment/25 via-transparent to-transparent"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-parchment/60 via-parchment/25 to-transparent sm:from-parchment/35 sm:via-transparent"
-      />
-      <div
-        aria-hidden="true"
-        className="animate-halo-breathe pointer-events-none absolute right-[10%] top-[16%] h-72 w-72 rounded-full bg-[radial-gradient(circle,oklch(0.92_0.14_78_/_40%)_0%,transparent_70%)] blur-2xl"
+        className="pointer-events-none absolute inset-0 bg-blossom/5 mix-blend-soft-light"
       />
 
       <div
@@ -303,7 +293,7 @@ export function ThankYouSection() {
           visible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
         }`}
       >
-        <div className="flex max-w-xl flex-col items-center text-center md:pr-12">
+        <div className="flex max-w-xl flex-col items-center text-center md:w-[58%] md:pr-8">
           <div className="mb-1 flex items-center gap-3">
             <span className="h-px w-12 bg-parchment-foreground/45 sm:w-16" />
             <LotusEmblem className="h-8 w-12 text-parchment-foreground/80" />
@@ -318,7 +308,7 @@ export function ThankYouSection() {
             for being a part of our special day.
           </p>
 
-          <div className="mt-8 space-y-1">
+          <div className="mt-7 space-y-1">
             <p className="font-[family-name:var(--font-display)] text-lg italic text-umber-glow sm:text-xl">
               With love,
             </p>

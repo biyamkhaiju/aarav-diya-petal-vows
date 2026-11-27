@@ -51,8 +51,8 @@ export function WeddingNavbar({ activeSection }: WeddingNavbarProps) {
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ${
         scrolled
-          ? "bg-dusk/75 shadow-[0_10px_30px_-10px_oklch(0.12_0.03_24_/_75%)] backdrop-blur-md"
-          : "bg-gradient-to-b from-dusk/65 via-dusk/25 to-transparent"
+          ? "bg-dusk/55 shadow-[0_10px_30px_-10px_oklch(0.12_0.03_24_/_75%)] backdrop-blur-md"
+          : "bg-gradient-to-b from-dusk/45 via-dusk/10 to-transparent"
       }`}
     >
       <nav

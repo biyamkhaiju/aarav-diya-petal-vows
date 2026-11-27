@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 /** Ornate carved Nepali-baroque ogee gold arch wrapping the Our Story couple portrait */
 export function OrnateStoryArch({ children }: { children: ReactNode }) {
   return (
-    <div className="group relative mx-auto w-[285px] sm:w-[360px] md:w-[410px]">
+    <div className="group relative mx-auto w-[310px] sm:w-[470px] md:w-[550px]">
       {/* Subtle sunlit aura behind the carved arch */}
       <div
         aria-hidden="true"
@@ -11,7 +11,7 @@ export function OrnateStoryArch({ children }: { children: ReactNode }) {
       />
 
       {/* Clipped portrait inside the ogee-arched opening */}
-      <div className="relative aspect-[3/3.65] w-full">
+      <div className="relative aspect-[8/5] w-full">
         <div
           className="shimmer-overlay absolute inset-[7.5%_8%_6.5%_8%] overflow-hidden bg-parchment shadow-[0_24px_48px_-14px_oklch(0.24_0.06_32_/_45%)]"
           style={{
@@ -25,6 +25,7 @@ export function OrnateStoryArch({ children }: { children: ReactNode }) {
         {/* Carved double gold ogee arch frame + baroque crown crest + corner scrollwork */}
         <svg
           viewBox="0 0 420 510"
+          preserveAspectRatio="none"
           fill="none"
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 h-full w-full drop-shadow-[0_10px_22px_oklch(0.28_0.07_38_/_42%)]"
@@ -179,7 +180,7 @@ export function OrnateEventArchCard({
         <circle cx="140" cy="358" r="2.2" fill="oklch(0.62 0.095 62)" opacity="0.75" />
       </svg>
 
-      <div className="relative z-10 flex min-h-[345px] flex-col items-center justify-center px-7 pb-9 pt-14 text-center text-parchment-foreground sm:min-h-[372px]">
+      <div className="relative z-10 flex min-h-[300px] flex-col items-center justify-center px-7 pb-9 pt-14 text-center text-parchment-foreground sm:min-h-[330px]">
         {children}
       </div>
     </article>

@@ -145,10 +145,11 @@ export function BackgroundMusicPlayer() {
 
     // Unlock audio automatically on the guest's very first interaction if browser blocked autoplay
     const unlockAudio = () => {
-      if (userPausedRef.current || !playerRef.current) return;
-      const state = playerRef.current.getPlayerState();
+      const player = playerRef.current;
+      if (userPausedRef.current || !player || typeof player.getPlayerState !== "function") return;
+      const state = player.getPlayerState();
       if (state !== window.YT?.PlayerState.PLAYING) {
-        startClip(playerRef.current);
+        startClip(player);
       }
     };
 
@@ -158,7 +159,7 @@ export function BackgroundMusicPlayer() {
 
     loopTimer = window.setInterval(() => {
       const player = playerRef.current;
-      if (!player || userPausedRef.current) return;
+      if (!player || userPausedRef.current || typeof player.getPlayerState !== "function") return;
       if (player.getPlayerState() === window.YT?.PlayerState.PLAYING) {
         const current = player.getCurrentTime();
         if (shouldLoopWeddingClip(current)) {

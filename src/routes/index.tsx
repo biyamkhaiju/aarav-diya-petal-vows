@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { BackgroundMusicPlayer } from "../components/wedding/BackgroundMusicPlayer";
 import { FallingFlorals } from "../components/wedding/FallingFlorals";
 import { HeroSection, OurStorySection } from "../components/wedding/HeroAndStory";
 import {
@@ -88,6 +89,7 @@ function Index() {
   return (
     <div className="relative min-h-screen bg-background text-foreground">
       <FallingFlorals />
+      <BackgroundMusicPlayer />
       <WeddingNavbar activeSection={activeSection} />
       <main>
         <HeroSection />
