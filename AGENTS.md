@@ -32,3 +32,4 @@ use the editor.
 ## Project Architecture
 
 - Keep all wedding invitation sections and ambient floral animations modular under `src/components/wedding/`, with guest RSVP confirmation stored browser-only in `localStorage` (`aarav-diya-rsvp-v1`) until a shared backend is requested.
+- Hero uses separate desktop (landscape) and mobile (portrait) artwork via <picture>, so the Buddha is never cropped on phones; keep scenery Buddhist (stupa, Newari bahal), not mixed Hindu.

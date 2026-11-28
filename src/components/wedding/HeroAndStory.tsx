@@ -1,5 +1,6 @@
 import { ChevronDown } from "lucide-react";
-import heroBg from "../../assets/hero-sunlit.jpg";
+import heroBg from "../../assets/hero-buddhist.jpg";
+import heroBgMobile from "../../assets/hero-buddhist-mobile.jpg";
 import storyBg from "../../assets/story-sunlit.jpg";
 import storyCouple from "../../assets/story-couple.jpg";
 import { useReveal } from "../../hooks/use-reveal";
@@ -18,22 +19,25 @@ const HERO_SPARKLES = [
 
 export function HeroSection() {
   return (
-    <section id="home" className="wedding-section-blend flex min-h-screen items-center">
-      <img
-        src={heroBg}
-        alt="Aarav and Diya beside a glowing lotus pond, with a golden Buddha and Bhaktapur temples"
-        fetchPriority="high"
-        className="absolute inset-0 h-full w-full object-cover object-[66%_center] brightness-[1.06] saturate-[1.2] md:object-center"
-      />
+    <section id="home" className="wedding-section-blend flex min-h-screen items-start bg-[linear-gradient(180deg,oklch(0.52_0.12_20),oklch(0.72_0.1_25)_30%)] md:items-center md:bg-none">
+      <picture>
+        <source media="(max-width: 767px)" srcSet={heroBgMobile} />
+        <img
+          src={heroBg}
+          alt="Aarav and Diya beside a lotus lake before a golden Buddha, Boudha stupa and Newari Buddhist monasteries"
+          fetchPriority="high"
+          className="absolute inset-x-0 bottom-0 h-[60%] w-full object-cover object-top brightness-[1.04] saturate-[1.12] md:inset-0 md:h-full md:object-[85%_35%]"
+        />
+      </picture>
 
       {/* Slowly turning golden sun rays behind the Buddha */}
       <div
         aria-hidden="true"
-        className="sunset-rays animate-rays-spin pointer-events-none absolute left-[72%] top-[32%] h-[130vmax] w-[130vmax] mix-blend-screen"
+        className="sunset-rays animate-rays-spin pointer-events-none absolute hidden md:block left-[87%] top-[25%] h-[130vmax] w-[130vmax] mix-blend-screen"
       />
       <div
         aria-hidden="true"
-        className="animate-halo-breathe pointer-events-none absolute left-[72%] top-[32%] h-[42vmax] w-[42vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,var(--lantern)_0%,transparent_65%)] opacity-60 mix-blend-screen"
+        className="animate-halo-breathe pointer-events-none absolute hidden md:block left-[87%] top-[25%] h-[42vmax] w-[42vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,var(--lantern)_0%,transparent_65%)] opacity-60 mix-blend-screen"
       />
 
       {/* Warm red-gold shading keeps the artwork rich and the calligraphy readable. */}
@@ -66,26 +70,26 @@ export function HeroSection() {
         </svg>
       ))}
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20 pt-24 sm:px-10">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20 pt-16 sm:px-10 md:pt-24">
         <div className="flex max-w-md flex-col items-center text-center md:items-start md:text-left">
           <p className="animate-hero-rise mb-2 font-[family-name:var(--font-display)] text-sm uppercase tracking-[0.35em] text-gold-light/90">
             Together with their families
           </p>
           <FiligreeFlourish className="animate-hero-rise mb-3 h-4 w-36 text-gold-light/90" />
 
-          <h1 className="animate-hero-rise font-[family-name:var(--font-script)] text-7xl leading-[0.98] sm:text-8xl lg:text-[7rem] [animation-delay:120ms]">
-            <span className="text-gold-shimmer block pr-4">Aarav</span>
-            <span className="my-1 flex items-center justify-center gap-4 md:justify-start">
-              <span className="h-px w-14 bg-gradient-to-r from-transparent via-gold-light/85 to-gold-light/40 sm:w-20" />
+          <h1 className="animate-hero-rise font-[family-name:var(--font-script)] text-5xl leading-[0.98] sm:text-8xl lg:text-[7rem] [animation-delay:120ms]">
+            <span className="text-gold-shimmer inline pr-1 md:block md:pr-4">Aarav</span>
+            <span className="mx-1 inline-flex items-center justify-center gap-4 md:my-1 md:mx-0 md:flex md:justify-start">
+              <span className="hidden h-px w-14 md:inline-block bg-gradient-to-r from-transparent via-gold-light/85 to-gold-light/40 sm:w-20" />
               <span className="font-[family-name:var(--font-display)] text-4xl italic font-normal text-gold-light sm:text-5xl">
                 &amp;
               </span>
-              <span className="h-px w-14 bg-gradient-to-l from-transparent via-gold-light/85 to-gold-light/40 sm:w-20" />
+              <span className="hidden h-px w-14 md:inline-block bg-gradient-to-l from-transparent via-gold-light/85 to-gold-light/40 sm:w-20" />
             </span>
-            <span className="text-gold-shimmer block pr-4">Diya</span>
+            <span className="text-gold-shimmer inline pr-1 md:block md:pr-4">Diya</span>
           </h1>
 
-          <p className="animate-hero-rise mt-5 font-[family-name:var(--font-display)] text-xl italic text-gold-glow sm:text-2xl [animation-delay:260ms]">
+          <p className="animate-hero-rise mt-3 md:mt-5 font-[family-name:var(--font-display)] text-xl italic text-gold-glow sm:text-2xl [animation-delay:260ms]">
             request the honour of your presence
           </p>
           <div className="animate-hero-rise mt-4 flex items-center gap-3 font-[family-name:var(--font-display)] text-gold-light [animation-delay:380ms]">
