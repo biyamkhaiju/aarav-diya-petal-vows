@@ -26,19 +26,9 @@ export function HeroSection() {
           src={heroBg}
           alt="Aarav and Diya beside a lotus lake before a golden Buddha, Boudha stupa and Newari Buddhist monasteries"
           fetchPriority="high"
-          className="absolute inset-x-0 bottom-0 h-[60%] w-full object-cover object-top brightness-[1.04] saturate-[1.12] md:inset-0 md:h-full md:object-[85%_35%]"
+          className="absolute inset-x-0 bottom-0 h-auto w-full object-cover [mask-image:linear-gradient(to_bottom,transparent,black_15%)] md:[mask-image:none] brightness-[1.04] saturate-[1.12] md:inset-0 md:h-full md:object-[85%_35%]"
         />
       </picture>
-
-      {/* Slowly turning golden sun rays behind the Buddha */}
-      <div
-        aria-hidden="true"
-        className="sunset-rays animate-rays-spin pointer-events-none absolute hidden md:block left-[87%] top-[25%] h-[130vmax] w-[130vmax] mix-blend-screen"
-      />
-      <div
-        aria-hidden="true"
-        className="animate-halo-breathe pointer-events-none absolute hidden md:block left-[87%] top-[25%] h-[42vmax] w-[42vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,var(--lantern)_0%,transparent_65%)] opacity-60 mix-blend-screen"
-      />
 
       {/* Warm red-gold shading keeps the artwork rich and the calligraphy readable. */}
       <div
@@ -70,14 +60,14 @@ export function HeroSection() {
         </svg>
       ))}
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20 pt-16 sm:px-10 md:pt-24">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20 pt-14 sm:px-10 md:pt-24">
         <div className="flex max-w-md flex-col items-center text-center md:items-start md:text-left">
-          <p className="animate-hero-rise mb-2 font-[family-name:var(--font-display)] text-sm uppercase tracking-[0.35em] text-gold-light/90">
+          <p className="animate-hero-rise mb-2 font-[family-name:var(--font-display)] text-[11px] uppercase tracking-[0.3em] sm:text-sm sm:tracking-[0.35em] text-gold-light/90">
             Together with their families
           </p>
           <FiligreeFlourish className="animate-hero-rise mb-3 h-4 w-36 text-gold-light/90" />
 
-          <h1 className="animate-hero-rise font-[family-name:var(--font-script)] text-5xl leading-[0.98] sm:text-8xl lg:text-[7rem] [animation-delay:120ms]">
+          <h1 className="animate-hero-rise font-[family-name:var(--font-script)] text-5xl leading-[0.98] sm:text-7xl lg:text-8xl xl:text-[7rem] [animation-delay:120ms]">
             <span className="text-gold-shimmer inline pr-1 md:block md:pr-4">Aarav</span>
             <span className="mx-1 inline-flex items-center justify-center gap-4 md:my-1 md:mx-0 md:flex md:justify-start">
               <span className="hidden h-px w-14 md:inline-block bg-gradient-to-r from-transparent via-gold-light/85 to-gold-light/40 sm:w-20" />
@@ -99,7 +89,7 @@ export function HeroSection() {
           </div>
           <a
             href="#rsvp"
-            className="shimmer-overlay animate-hero-rise relative mt-6 overflow-hidden rounded-full border border-gold-light/70 bg-crimson/70 px-7 py-2.5 font-[family-name:var(--font-display)] text-lg text-gold-light shadow-[0_8px_28px_-6px_var(--crimson)] backdrop-blur-sm transition hover:bg-crimson/90 [animation-delay:500ms]"
+            className="shimmer-overlay animate-hero-rise relative mt-4 md:mt-6 overflow-hidden rounded-full border border-gold-light/70 bg-crimson/70 px-7 py-2.5 font-[family-name:var(--font-display)] text-lg text-gold-light shadow-[0_8px_28px_-6px_var(--crimson)] backdrop-blur-sm transition hover:bg-crimson/90 [animation-delay:500ms]"
           >
             Join the celebration ♡
           </a>
